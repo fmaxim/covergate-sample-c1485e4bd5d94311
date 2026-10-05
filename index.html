@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>CoverGate SAMPLE · COI Tracker demo</title>
+<style>
+  :root { --bg:#0b1016; --card:#151c26; --line:#2a3644; --txt:#e7ecf3; --mut:#9aa7b8; --acc:#38bdf8; --warn:#ff6b6b; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif; background:var(--bg); color:var(--txt); }
+  .wm { position:fixed; inset:0; pointer-events:none; display:flex; align-items:center; justify-content:center;
+    font-size:clamp(36px,8vw,72px); font-weight:800; letter-spacing:.1em; color:rgba(255,80,80,.10); transform:rotate(-18deg); z-index:0; }
+  .wrap { position:relative; z-index:1; max-width:980px; margin:0 auto; padding:28px 20px 64px; }
+  .badge { display:inline-block; background:rgba(180,40,40,.92); color:#fff; font-weight:800; letter-spacing:.06em;
+    padding:8px 14px; border-radius:8px; font-size:13px; margin-bottom:16px; }
+  h1 { font-size:clamp(26px,4vw,38px); margin:0 0 8px; }
+  .sub { color:var(--mut); margin:0 0 24px; line-height:1.5; }
+  .bullets { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 22px; margin:0 0 28px; }
+  .bullets li { margin:8px 0; color:#d5dde8; line-height:1.45; }
+  .bullets strong { color:#fff; }
+  .grid { display:grid; gap:16px; grid-template-columns:1fr; }
+  @media(min-width:760px){ .grid.shots { grid-template-columns:1fr 1fr; } }
+  figure { margin:0; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  figure img, figure video { display:block; width:100%; height:auto; background:#000; }
+  figcaption { padding:10px 14px; color:var(--mut); font-size:13px; border-top:1px solid var(--line); }
+  .note { margin-top:28px; color:var(--mut); font-size:13px; border-top:1px solid var(--line); padding-top:16px; }
+  .ph { padding:48px 20px; text-align:center; color:var(--mut); border:1px dashed var(--line); margin:12px; border-radius:10px; }
+  a { color:var(--acc); }
+  .pills { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 0; }
+  .pill { font-size:11px; font-weight:700; padding:4px 10px; border-radius:999px; }
+  .g { background:#064e3b; color:#6ee7b7; } .y { background:#713f12; color:#fde68a; } .r { background:#7f1d1d; color:#fecaca; }
+</style>
+</head>
+<body>
+  <div class="wm">SAMPLE · PORTFOLIO DEMO</div>
+  <div class="wrap">
+    <div class="badge">SAMPLE · PORTFOLIO DEMO · NOT A CLIENT DELIVERABLE</div>
+    <h1>CoverGate · Subcontractor COI Tracker</h1>
+    <p class="sub">Private SAMPLE demo — vendor list, deterministic clear-to-pay colors, reminder cron (shown firing), Friday pay-block hold. Obscure link; watermarked portfolio only.</p>
+
+    <ul class="bullets">
+      <li><strong>Deterministic pay rules:</strong> green / yellow ≤30d / red — pay-block = active ∧ red ∧ open invoice. No LLM decides who gets paid.</li>
+      <li><strong>Reminder cron:</strong> 30-day &amp; 7-day windows POST mock emails to a local capture proof (no real Gmail).</li>
+      <li><strong>Privacy:</strong> W-9 metadata only; tax-ID patterns masked before save. Sheets/Drive/OCR mocked in this stub.</li>
+    </ul>
+    <div class="pills">
+      <span class="pill g">GREEN clear</span>
+      <span class="pill y">YELLOW ≤30d</span>
+      <span class="pill r">RED hold / pay-block</span>
+    </div>
+
+    <h2 style="font-size:18px;margin:28px 0 12px;color:#cfd8e3">Screen record (60–90s)</h2>
+    <figure style="margin-bottom:22px">
+      <video id="demoVid" controls playsinline preload="metadata" poster="assets/01-vendors.png">
+        <source src="assets/covergate-coi-demo-SAMPLE.mp4" type="video/mp4" />
+      </video>
+      <div class="ph" id="vidFallback" hidden>MP4 not in assets yet — parent records from <code>apply/WALKTHROUGH-SCRIPT.md</code> → <code>assets/covergate-coi-demo-SAMPLE.mp4</code></div>
+      <figcaption>Vendors → Run daily reminder job → capture proof → Friday hold list. SAMPLE watermark throughout.</figcaption>
+    </figure>
+
+    <h2 style="font-size:18px;margin:0 0 12px;color:#cfd8e3">Still frames</h2>
+    <div class="grid shots">
+      <figure>
+        <img src="assets/01-vendors.png" alt="CoverGate vendors SAMPLE" onerror="this.parentElement.style.opacity=.45" />
+        <figcaption>Vendor list — clear-to-pay colors + pay-block</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/02-cron-log.png" alt="CoverGate cron SAMPLE" onerror="this.parentElement.style.opacity=.45" />
+        <figcaption>Reminder cron fired — timestamp log</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/03-proof-captures.png" alt="CoverGate proof SAMPLE" onerror="this.parentElement.style.opacity=.45" />
+        <figcaption>Local email capture proof</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/04-friday-hold.png" alt="CoverGate Friday hold SAMPLE" onerror="this.parentElement.style.opacity=.45" />
+        <figcaption>Friday payment hold list</figcaption>
+      </figure>
+    </div>
+
+    <p class="note">Biz cite: “CoverGate SAMPLE — private demo page (COI tracker · deterministic holds · reminder cron). Watermarked portfolio only; no client contact / no Submit.” Parent hosts on GitHub Pages with <code>noindex</code>.</p>
+  </div>
+  <script>
+    const v = document.getElementById('demoVid');
+    const fb = document.getElementById('vidFallback');
+    v.querySelector('source').addEventListener('error', () => { fb.hidden = false; });
+    v.addEventListener('error', () => { fb.hidden = false; });
+    // If mp4 404, show fallback after a tick
+    fetch('assets/covergate-coi-demo-SAMPLE.mp4', { method: 'HEAD' }).then(r => {
+      if (!r.ok) fb.hidden = false;
+    }).catch(() => { fb.hidden = false; });
+  </script>
+</body>
+</html>
